@@ -6,8 +6,18 @@
     <br>
 </p>
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-rapidly creating small projects.
+Порядок установки
+-------------------
+* composer update
+* php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
+* созадть пользователя с именем admin. Пароль будет в папке C:\OpenServer\domains\edu\runtime\mail\
+
+
+Список зависимостей
+-------------------
+
+* [yii2-user](https://github.com/dektrium/yii2-user)  
+ 
 
 The template contains the basic features including user login/logout and a contact page.
 It includes all commonly used configurations that would allow you to focus on adding new

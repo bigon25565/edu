@@ -19,10 +19,6 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -51,6 +47,19 @@ $config = [
             ],
         ],
         */
+    ],
+    'modules' => [
+	    'user' => [
+		    'class' => 'dektrium\user\Module',
+		    'enableFlashMessages' => true,
+		    'enableRegistration' => true,
+		    'enableGeneratingPassword' => true,
+		    'enableConfirmation' => false,
+		    'enableUnconfirmedLogin' => true,
+		    'confirmWithin' => 21600,
+		    'cost' => 12,
+		    'admins' => ['admin']
+	    ],
     ],
     'params' => $params,
 ];
