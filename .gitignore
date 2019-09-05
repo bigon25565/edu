@@ -1,5 +1,7 @@
 # phpstorm project files
 .idea
+#database settings
+/config/db.php
 
 # netbeans project files
 nbproject
