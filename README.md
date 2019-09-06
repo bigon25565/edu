@@ -17,7 +17,8 @@
 -------------------
 
 * [yii2-user](https://github.com/dektrium/yii2-user)  
- 
+* [yii2-rbac](https://github.com/dektrium/yii2-rbac)  
+* [bizley/migration yii2-migration](https://github.com/bizley/yii2-migration) 
 
 The template contains the basic features including user login/logout and a contact page.
 It includes all commonly used configurations that would allow you to focus on adding new

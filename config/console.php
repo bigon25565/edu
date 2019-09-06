@@ -28,6 +28,11 @@ $config = [
         ],
         'db' => $db,
     ],
+    'controllerMap' => [
+        'migration' => [
+            'class' => 'bizley\migration\controllers\MigrationController',
+        ],
+    ],
     'modules' => [
 	    'user' => [
 		    'class' => 'dektrium\user\Module',
