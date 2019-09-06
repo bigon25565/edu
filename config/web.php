@@ -63,6 +63,9 @@ $config = [
 		    'admins' => ['admin']
         ],
         'rbac' => 'dektrium\rbac\RbacWebModule',
+        'Teacher' => [
+            'class' => 'app\teacher\Teacher',
+        ],
     ],
     'params' => $params,
 ];
