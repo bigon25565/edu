@@ -11,7 +11,7 @@
 * composer update
 * php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
 * созадть пользователя с именем admin. Пароль будет в папке C:\OpenServer\domains\edu\runtime\mail\
-
+* php yii migrate/up --migrationPath=@yii/rbac/migrations
 
 Список зависимостей
 -------------------

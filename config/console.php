@@ -14,6 +14,7 @@ $config = [
         '@tests' => '@app/tests',
     ],
     'components' => [
+      
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -30,7 +31,8 @@ $config = [
     'modules' => [
 	    'user' => [
 		    'class' => 'dektrium\user\Module',
-	    ],
+        ],
+        'rbac' => 'dektrium\rbac\RbacConsoleModule',
     ],
     'params' => $params,
     /*
