@@ -12,6 +12,7 @@
 * php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
 * созадть пользователя с именем admin. Пароль будет в папке C:\OpenServer\domains\edu\runtime\mail\
 * php yii migrate/up --migrationPath=@yii/rbac/migrations
+* php yii migrate
 
 Список зависимостей
 -------------------
@@ -19,6 +20,7 @@
 * [yii2-user](https://github.com/dektrium/yii2-user)  
 * [yii2-rbac](https://github.com/dektrium/yii2-rbac)  
 * [bizley/migration yii2-migration](https://github.com/bizley/yii2-migration) 
+* [kartik-v/yii2-widget-select2](https://github.com/kartik-v/yii2-widget-select2) 
 
 The template contains the basic features including user login/logout and a contact page.
 It includes all commonly used configurations that would allow you to focus on adding new

@@ -14,8 +14,8 @@ class m190906_104838_create_table_group extends Migration
         $this->createTable('{{%group}}', [
             'id' => $this->primaryKey(),
             'title' => $this->string()->notNull()->comment('Номер или название группы'),
-            'year_begn' => $this->date()->notNull()->comment('Год начала обучения группы'),
-            'year_end' => $this->date()->notNull()->comment('Год окончания обучения группы'),
+            'year_begin' => 'year NOT NULL COMMENT \'Год начала обучения группы\'',
+            'year_end' => 'year NOT NULL COMMENT \'Год окончания обучения группы\'',
             'p_id' => $this->integer(),
             'author_id' => $this->integer()->comment('Автор записи'),
         ], $tableOptions);

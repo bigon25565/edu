@@ -17,8 +17,8 @@ class GroupSearch extends Group
     public function rules()
     {
         return [
-            [['id', 'p_id', 'author_id'], 'integer'],
-            [['title', 'year_begn', 'year_end'], 'safe'],
+            [['id', 'p_id', 'author_id','educational_organization_id'], 'integer'],
+            [['title', 'year_begin', 'year_end'], 'safe'],
         ];
     }
 
@@ -59,10 +59,11 @@ class GroupSearch extends Group
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'year_begn' => $this->year_begn,
+            'year_begin' => $this->year_begin,
             'year_end' => $this->year_end,
             'p_id' => $this->p_id,
             'author_id' => $this->author_id,
+            'educational_organization_id' => $this->educational_organization_id,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title]);

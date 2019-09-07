@@ -2,6 +2,7 @@
 
 namespace app\teacher\controllers;
 
+use app\models\EducationalOrganization;
 use Yii;
 use app\models\Group;
 use app\models\search\GroupSearch;
@@ -41,6 +42,7 @@ class GroupController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'educationalOrganizationList' => EducationalOrganization::selectList()
         ]);
     }
 
@@ -72,6 +74,7 @@ class GroupController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'educationalOrganizationList' => EducationalOrganization::selectList()
         ]);
     }
 
@@ -92,6 +95,7 @@ class GroupController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'educationalOrganizationList' => EducationalOrganization::selectList()
         ]);
     }
 
