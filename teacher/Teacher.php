@@ -10,6 +10,10 @@ class Teacher extends \yii\base\Module
     /**
      * {@inheritdoc}
      */
+    public $layout = 'teacher_layout';
+    /**
+     * {@inheritdoc}
+     */
     public $controllerNamespace = 'app\teacher\controllers';
 
     /**
