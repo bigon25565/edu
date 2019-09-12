@@ -3,8 +3,14 @@
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
+
+
+
+
 ?>
 <div class="site-index">
+	<?= \klisl\mytest\AutoloadExample::widget(); ?>
+
 
     <div class="jumbotron">
         <h1>Congratulations!</h1>

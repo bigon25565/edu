@@ -12,7 +12,7 @@
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.14",
@@ -21,7 +21,9 @@
         "dektrium/yii2-user": "^0.9.14",
         "bizley/migration": "^3.5",
         "dektrium/yii2-rbac": "1.0.0-alpha@dev",
-        "kartik-v/yii2-widget-select2": "@dev"
+        "kartik-v/yii2-widget-select2": "@dev",
+        "klisl/yii2-mytest": "dev-master"
+
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -68,6 +70,10 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "git",
+            "url": "C:\\Open Server 5.3.0\\OSPanel\\domains\\edu\\runtime\\tmp-extensions\\yii2-mytest"
         }
     ]
 }
