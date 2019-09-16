@@ -7,12 +7,26 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'ru-RU',
+    'sourceLanguage' => 'en-US',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
-       
+	    'i18n' => [
+		    'translations' => [
+			    '*' => [
+				    'class' => 'yii\i18n\PhpMessageSource',
+				     'basePath' => '@app/messages',
+				    'sourceLanguage' => 'en-US',
+				    'fileMap' => [
+					    'app' => 'app.php',
+					    'test_system' => 'test_system.php',
+				    ],
+			    ],
+		    ],
+	    ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'G-L9_adQbKAXOLQ9zxtaXdKtPPebwx-3',
@@ -66,6 +80,9 @@ $config = [
         'teacher' => [
             'class' => 'app\teacher\Teacher',
         ],
+	    'TestSystem' => [
+		    'class' => 'app\test_system\TestSystem',
+	    ],
 	    'markdown' => [
 		    // the module class
 		    'class' => 'kartik\markdown\Module',
