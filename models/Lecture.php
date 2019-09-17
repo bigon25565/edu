@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\test_system\models\lecture_has_test\LectureHasTest;
+use app\test_system\models\test\Test;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -22,6 +24,7 @@ use yii\helpers\VarDumper;
  * @property int $course_id
  *
  * @property CourseHasLecture[] $courseHasLectures
+ * @property LectureHasTest[] $lectureHasTests
  */
 class Lecture extends \yii\db\ActiveRecord {
 	public $course_id;
@@ -33,6 +36,9 @@ class Lecture extends \yii\db\ActiveRecord {
 		return 'lecture';
 	}
 
+	/**
+	 * @return array
+	 */
 	public function behaviors() {
 		return [
 			[
@@ -87,11 +93,27 @@ class Lecture extends \yii\db\ActiveRecord {
 	}
 
 	/**
-	 * @param bool $insert
-	 * @param array $changedAttributes
+	 * @return \yii\db\ActiveQuery
 	 */
-	public function afterSave( $insert, $changedAttributes ) {
-		parent::afterSave( $insert, $changedAttributes );
-		CourseHasLecture::addRecord( $this->course_id, $this->id );
+	public function getLectureHasTests() {
+		return $this->hasMany( LectureHasTest::className(), [ 'lecture_id' => 'id' ] );
 	}
-}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getTests()
+	{
+		return $this->hasMany(Test::className(), ['id' => 'test_id'])
+		            ->via('lectureHasTests');
+	}
+		/**
+		 * @param bool $insert
+		 * @param array $changedAttributes
+		 */
+		public
+		function afterSave( $insert, $changedAttributes ) {
+			parent::afterSave( $insert, $changedAttributes );
+			CourseHasLecture::addRecord( $this->course_id, $this->id );
+		}
+	}

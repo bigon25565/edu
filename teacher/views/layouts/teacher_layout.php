@@ -10,8 +10,9 @@ use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
-AppAsset::register($this);
+
 $bundle = yiister\gentelella\assets\Asset::register( $this );
+AppAsset::register($this);
 $user = \Yii::$app->user;
 ?>
 <?php $this->beginPage(); ?>

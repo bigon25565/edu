@@ -3,7 +3,12 @@ body {
     height: 100%;
     color: #2A3F54 !important;
 }
-
+.green{
+    color: #1ABB9C;
+}
+.red{
+    color: #ed1d39;
+}
 .wrap {
 min-height: 100%;
 height: auto;

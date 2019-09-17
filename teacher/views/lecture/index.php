@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\LectureSerach */
@@ -35,7 +36,17 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
              //'created_by',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                    'class' => 'yii\grid\ActionColumn',
+                    'buttons'=>[
+	                    'create_test'=>function ($url, $model) {
+		                    $url= Url::to(['/teacher/test/create','lecture_id'=>$model->id]);
+		                    return Html::a('<span class="glyphicon glyphicon-plus"></span>', $url);
+	                    },
+
+                    ],
+                    'template' => '{update}{view}{delete}{create_test}',
+            ],
         ],
     ]); ?>
 

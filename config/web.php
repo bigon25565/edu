@@ -65,11 +65,26 @@ $config = [
     ],
     
     'modules' => [
+	    'datecontrol' =>[
+		    'class' => 'kartik\datecontrol\Module',
+		    'displaySettings' => [
+			    \kartik\datecontrol\Module::FORMAT_DATE =>'php: d.m.Y',
+			    \kartik\datecontrol\Module::FORMAT_TIME =>'php: H:i',
+			    \kartik\datecontrol\Module::FORMAT_DATETIME =>'php: d.M.Y H:i'
+		    ],
+		    'saveSettings' => [
+			    \kartik\datecontrol\Module::FORMAT_DATE =>'yyyy-M-dd',
+			    \kartik\datecontrol\Module::FORMAT_TIME =>'H:i:s',
+			    \kartik\datecontrol\Module::FORMAT_DATETIME =>'yyyy-M-dd H:i:s'
+		    ],
+		    'displayTimezone' => 'UTC',
+		    'autoWidget' => true,
+	    ],
 	    'user' => [
 		    'class' => 'dektrium\user\Module',
 		    'enableFlashMessages' => true,
 		    'enableRegistration' => true,
-		    'enableGeneratingPassword' => true,
+		  //  'enableGeneratingPassword' => true,
 		    'enableConfirmation' => false,
 		    'enableUnconfirmedLogin' => true,
 		    'confirmWithin' => 21600,
