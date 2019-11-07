@@ -1,0 +1,40 @@
+html,
+.fom{
+	float: left;
+}
+.window{
+	position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 17px;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #E6E9ED;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    opacity: 1;
+    transition: all .2s ease;
+}
+.wind{
+	float: right;
+}
+.imag{
+	float:left;
+	position: relative;
+}
+.textes{
+	float:left;
+	position: relative;
+}
+.bigtxt{
+	font-size: 17px;
+}
+.datat{
+	margin: 4px;
+}
+ul.msg_list li {
+display: block;
+}
+.wakyline{
+	border-width: 3px;
+}

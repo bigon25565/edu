@@ -54,14 +54,14 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+       
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        
     ],
     
     'modules' => [
@@ -94,6 +94,9 @@ $config = [
         'rbac' => 'dektrium\rbac\RbacWebModule',
         'teacher' => [
             'class' => 'app\teacher\Teacher',
+        ],
+        'common'=> [
+        	'class' => 'app\common\Common'
         ],
 	    'TestSystem' => [
 		    'class' => 'app\test_system\TestSystem',
