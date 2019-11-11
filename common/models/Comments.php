@@ -67,7 +67,7 @@ class Comments extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCommentHasFiles()
+    public function getFiles()
     {
         return $this->hasMany(CommentHasFiles::className(), ['comment_id' => 'id']);
     }
@@ -83,7 +83,7 @@ class Comments extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRaitings()
+    public function getRaiting()
     {
         return $this->hasMany(Raiting::className(), ['comment_id' => 'id']);
     }

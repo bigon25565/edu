@@ -4,14 +4,9 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
-
+use kartik\rating\StarRating;
 ?>
 <div class=''>
-
-
-
-	 
-
 	<?php
 	$form = ActiveForm::begin([
 	    'id' => 'comment_form',
@@ -28,14 +23,13 @@ use kartik\file\FileInput;
 					    <?= $form->field($model, 'content')->textarea(['class'=>'resizable_textarea form-control'])->label('Оставьте комментарий'); ?>
 					      <div class="row">
 					 		<div class='col-md-6'>
-					    <?= $form->field($file, 'file')->widget(FileInput::classname(),[
+					    <?= $form->field($hell, 'file')->widget(FileInput::classname(),[
 					    'pluginOptions' => [
 					        'showPreview' => false,
 					        'showCaption' => true,
 					        'showRemove' => true,
 					        'showUpload' => false,
-					       // 'mainClass' => 'col-md-4 fom'
-					    ]
+					    ],
 					])->label('');?>
 						</div>
 					<div class='col-md-6'>
@@ -48,23 +42,21 @@ use kartik\file\FileInput;
 			<h1 class="x_title">Комментарии</h1>
 				<div class=' fom x_content'>
 					<ul class ='list-unstyled msg_list'>
-
 					<?php
-					    // echo '<pre>';
-				    	// print_r($comments);
-				    	// echo '</pre>';
-				    	// die;
-							// echo '<pre>';
-				  //   	print_r($groovy);
-				  //   	echo '</pre>';
-				  //   	die; C:/ospanel/domains/edu/common/uploads/mr.png
-					foreach ($comments as $groovy):
-					// strstr($groovy->created_at,':',true); ?>
-				
+
+					foreach ($comments as $groovy): ?>
+<!-- 						?echo '<pre>';
+				    	print_r($groovy->creator->role);
+				    	echo '</pre>';
+				    	die; -->
 						 <li>
 						 	<div class="row">
 						 		<div class="imag col-md-2">
-						 			<img src="/web/uploads/mr.PNG" class="img-rounded img-responsive">
+						 			<? if($groovy->creator->role[0]->item_name == 'admin')
+						 			{
+						 				echo '<img src="/web/uploads/mr.PNG" class="img-rounded img-responsive">';
+						 			}
+						 			?>
 						 		</div>
 						 			<div class="textes col-md-10">
 						 				<span class="bigtxt">
@@ -76,19 +68,41 @@ use kartik\file\FileInput;
 						 					<?= $groovy->content ?> 
 						 				</span>
 						 			</div>
-						 			
 							</div>
 							<div class="row">
 
 								<hr class="whakyline">
-								<?php foreach ($groovy as $boomstick){
-									echo '<pre>';
-							    	print_r($boomstick->commentHasFiles);
-							    	echo '</pre>';
-							    	die;
-								}
-
-								?>
+								<?php foreach ($groovy->files as $boomstick): ?>
+									<div class="imag col-md-1">
+									<?= '<a href="/web/uploads/'.$boomstick->name.'" download >' ?>
+									<div class="">
+									<img src="/web/uploads/file.PNG" class="img-responsive">
+									</div>
+									<div>
+							    	<?= $boomstick->name ?>
+							    	</div>
+							    	</a>
+							    	</div>
+								<? endforeach;?>
+						 	</div>
+						 	<?
+						 	if($_SESSION['__id']==$groovy->creator->id  || $groovy->creator->role[0]->item_name == 'admin')
+						 	{
+						 		echo 
+						 		'
+						 		<a href="http://edu/web/common/works/commentdelete?id='.$groovy->id.'">
+						 		<div class="btn btn-danger pull_left">
+						 			Удалить
+						 		</div>
+						 		</a>
+						 		';
+						 	}
+						 	?>
+						 	<div>
+						 		<? $form = ActiveForm::begin(['id' => 'lol'])?>
+						 		<?= $form->field($rating, 'rating')->widget(StarRating::classname(), [])->label('Оставьте свою оценку!') ?>
+						 		 <?= Html::submitButton('Отправить', ['class' => 'btn btn-success pull-left'])->label('Оставить') ?>
+						 		<? ActiveForm::end() ?>
 						 	</div>
 						</li>
 					 

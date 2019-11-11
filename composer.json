@@ -29,7 +29,8 @@
         "kartik-v/yii2-datecontrol": "dev-master",
         "kartik-v/yii2-widget-datetimepicker": "*",
         "mickeyur/yii2-commentator": "dev-master",
-        "kartik-v/yii2-widget-fileinput": "dev-master"
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "kartik-v/yii2-widget-rating": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

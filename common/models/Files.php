@@ -41,9 +41,15 @@ class Files extends ActiveRecord
     public function upload()
     {
         if ($this->validate() && $this->file != NULL) {
-            $this->file->saveAs('../web/uploads/' . $this->file->baseName . '.' . $this->file->extension);
+            // foreach ($this->file as $files) {
+                $this->file->saveAs('../web/uploads/' . $this->file->baseName . '.' . $this->file->extension);
+            // }
             return true;
         } else {
+            // echo '<pre>';
+            // print_r($this);
+            // echo '</pre>';
+            // die;
             return false;
         }
     }

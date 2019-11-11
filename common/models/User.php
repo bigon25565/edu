@@ -87,6 +87,11 @@ class User extends \yii\db\ActiveRecord
         return $this->hasMany(Comments::className(), ['creator_id' => 'id']);
     }
 
+    public function getRole()
+    {
+        return $this->hasMany(Roles::className(), ['user_id' => 'id']);
+    }
+    
     /**
      * @return \yii\db\ActiveQuery
      */
