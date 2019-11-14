@@ -29,8 +29,8 @@ class Rating extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['comment_id', 'rating'], 'required'],
-            [['comment_id', 'rating'], 'integer'],
+            [['comment_id'], 'required'],
+            [['comment_id'], 'integer'],
             [['comment_id'], 'exist', 'skipOnError' => true, 'targetClass' => Comments::className(), 'targetAttribute' => ['comment_id' => 'id']],
         ];
     }

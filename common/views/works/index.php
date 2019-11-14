@@ -45,8 +45,8 @@ use kartik\rating\StarRating;
 					<?php
 
 					foreach ($comments as $groovy): ?>
-<!-- 						?echo '<pre>';
-				    	print_r($groovy->creator->role);
+<!-- 						echo '<pre>';
+				    	print_r($valu=$groovy->rating[0]->rating*0.5);
 				    	echo '</pre>';
 				    	die; -->
 						 <li>
@@ -55,6 +55,12 @@ use kartik\rating\StarRating;
 						 			<? if($groovy->creator->role[0]->item_name == 'admin')
 						 			{
 						 				echo '<img src="/web/uploads/mr.PNG" class="img-rounded img-responsive">';
+						 			}else if($groovy->creator->role[0]->item_name == 'teacher'){
+						 				echo '<img src="/web/uploads/teacher.PNG" class="img-rounded img-responsive">';
+						 			}else if($groovy->creator->role[0]->item_name == 'student'){
+						 				echo '<img src="/web/uploads/student.PNG" class="img-rounded img-responsive">';
+						 			}else if($groovy->creator->role[0]->item_name == 'student'){
+						 				echo '<img src="/web/uploads/manager.PNG" class="img-rounded img-responsive">';
 						 			}
 						 			?>
 						 		</div>
@@ -83,9 +89,23 @@ use kartik\rating\StarRating;
 							    	</div>
 							    	</a>
 							    	</div>
-								<? endforeach;?>
+								<?php endforeach;?>
 						 	</div>
-						 	<?
+						 	<?php
+						 	$number;
+						 	$i;
+							// echo '<pre>';
+				   //  		print_r($groovy->rating);
+				   //  		echo '</pre>';
+				   //  		die;
+						 	foreach ($groovy->rating as $arr)
+						 	{
+						 		$number= $number+$arr->rating;
+						 		$i++;
+						 	}
+						 	if($i==0){
+						 		$i=1;
+						 	}
 						 	if($_SESSION['__id']==$groovy->creator->id  || $groovy->creator->role[0]->item_name == 'admin')
 						 	{
 						 		echo 
@@ -98,11 +118,35 @@ use kartik\rating\StarRating;
 						 		';
 						 	}
 						 	?>
+						 	<hr>
 						 	<div>
-						 		<? $form = ActiveForm::begin(['id' => 'lol'])?>
-						 		<?= $form->field($rating, 'rating')->widget(StarRating::classname(), [])->label('Оставьте свою оценку!') ?>
-						 		 <?= Html::submitButton('Отправить', ['class' => 'btn btn-success pull-left'])->label('Оставить') ?>
-						 		<? ActiveForm::end() ?>
+						 		<?php $lol = ActiveForm::begin(['id' => 'lel'])?>
+						 		<?= $lol->field($rating, 'rating')->widget(StarRating::classname(), [
+						 			'options'=>[
+						 			'value'=>$number/$i,
+						 			],
+						 			'pluginOptions'=>['mainclass'=>'lol'],
+						 			'pluginEvents' => [
+						 				'rating:change' => "function(event, value, caption) {
+						 					     console.log(value);
+   												 console.log(".$groovy->id.");
+						 					$.ajax({
+						 						url:'works/rating',
+						 						method:'post',
+						 						data: {
+						 							stars:value, id:".$groovy->id."
+						 						},
+						 						success:function(data){
+						 							alert(data);
+						 						},
+						 						error:function(){
+						 							alert('Вы уже оставили оценку на этот комментарий');
+						 						}
+						 					});
+						 			}"			
+						 			],
+						 		])->label('Оставьте свою оценку!') ?>
+						 		<?php ActiveForm::end() ?>
 						 	</div>
 						</li>
 					 

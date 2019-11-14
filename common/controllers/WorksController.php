@@ -15,10 +15,11 @@ use yii\web\UploadedFile;
 
 class WorksController extends Controller
 {
-
+  public $enableCsrfValidation = false;
 
 	public function actionIndex()
     {	
+
     	$comments = Comments::find()->where(['test_id'=>1])->all();
     	$has = new Hasfiles;
         $model = new Comments;
@@ -33,6 +34,9 @@ class WorksController extends Controller
         {
             // if($rating->validate)
             // {
+                echo '<pre>';
+                print_r($rating);
+                echo '</pre>';
                 die;
                 $rating->save();
             // }
@@ -69,5 +73,37 @@ class WorksController extends Controller
         $del = Comments::find()->where(['id'=>$id])->one();
         $del->delete();
         return $this->redirect('http://edu/web/common/works');
+    }
+
+    public function actionRating()
+    {
+
+            // echo '<pre>';
+            // print_r($data);
+            // echo '</pre>';
+            // die;  
+        if(\Yii::$app->request->isAjax)
+        {
+            $exist=Rating::find()->where(['comment_id'=>$_POST['id'], 'user_id'=>$_SESSION['__id']])->asArray()->one();
+
+            if($exist)
+            {
+                $text='Вы уже оставили оценку на этот комментарий';
+                return $text;
+            }                
+
+            $rating=new Rating;
+            $rating->comment_id=$_POST['id'];
+            $rating->rating=$_POST['stars'];
+            $rating->user_id=$_SESSION['__id'];
+            $rating->save(false);
+            $text='Спасибо за вашу оценку';
+            return $text;
+            // echo '<pre>';
+            // print_r($data);
+            // echo '</pre>';
+            // die;            
+        }
+     //   return '$exist';
     }
 }

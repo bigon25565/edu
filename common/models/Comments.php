@@ -83,8 +83,8 @@ class Comments extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRaiting()
+    public function getRating()
     {
-        return $this->hasMany(Raiting::className(), ['comment_id' => 'id']);
+        return $this->hasMany(Rating::className(), ['comment_id' => 'id']);
     }
 }
